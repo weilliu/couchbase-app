@@ -7,6 +7,12 @@
   <version>2.5</version>
   <name>couchbase-app</name>
   <url>http://maven.apache.org</url>
+  
+    <scm>
+	<connection>scm:git:git@github.com:weilliu/couchbase-app.git</connection>
+	<url>scm:git:git@github.com:weilliu/couchbase-app.git</url>
+	<developerConnection>scm:git:git@github.com:weilliu/couchbase-app.git</developerConnection>
+    </scm>
 
   <dependencies>
     <dependency>
