@@ -20,7 +20,7 @@ public class Client
 	public static void main( String[] args )throws Exception
     {
     	//Connect to the cluster and bucket
-    	Cluster cluster = new CouchbaseCluster("172.23.107.174");
+    	Cluster cluster = new CouchbaseCluster("127.0.0.1");
     	Bucket bucket = cluster.openBucket("Client","").toBlockingObservable().single(); //no password
 	
     	//get a document
@@ -30,6 +30,7 @@ public class Client
     	
     	//insert json array to a document id
     	JsonArray json_array = JsonArray.empty();
+
     	json_array.add(JsonObject.empty().put("firstname", "John"));
     	json_array.add(JsonObject.empty().put("lastname", "Doe"));
     	json_array.add(JsonObject.empty().put("firstname", "Matt"));
@@ -64,7 +65,6 @@ public class Client
         System.out.println("java8 "+viewResult.toString()));
 
     	
-    	
     	//View document id
     	Iterator<ViewResult> iterator = bucket.query(ViewQuery.from("users", "by_firstname")).toBlockingObservable().getIterator();
     	while(iterator.hasNext()) {
@@ -72,10 +72,11 @@ public class Client
     	    System.out.println("java7 "+result.id());
     	}
     	
-    	
+
+ 
     	//close the connection
     	cluster.disconnect();
-    	
+   	
 /*
     	//Use this code after I install N1QL Server
     	System.setProperty("com.couchbase.client.queryEnabled", "true");
