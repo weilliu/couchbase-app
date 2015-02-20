@@ -1,0 +1,13 @@
+{
+	"id": 350,
+        "firstname": "weili",
+	"query": [
+		 {"SELECT":"SELECT * from default"}, 
+		 {"UPDATE":"UPDATE default SET InflateLevel= 40 WHERE META(default).id = 'N1QLFillerSeed'"} , 
+	]
+	"index":{
+                "primary":"CREATE PRIMARY INDEX ON default;",
+                "secondary":"CREATE INDEX secondary ON default (InflateContent);",
+                "composite":"CREATE INDEX #composite  ON default (data,type )",
+        }  
+}
