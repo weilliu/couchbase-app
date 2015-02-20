@@ -495,7 +495,7 @@ public class Client {
         long val = 0;
         
         try {
-            reader = new BufferedReader(new FileReader("/Users/wei-li/Desktop/CertandKey/stat"));
+            reader = new BufferedReader(new FileReader("/proc/stat"));
             String line = reader.readLine();
            
             while (line!=null) {
@@ -537,6 +537,30 @@ public class Client {
     }
     
     
+    private static void getMemT()
+    {
+        int mb = 1024*1024;
+        
+        //Getting the runtime reference from system
+        Runtime runtime = Runtime.getRuntime();
+         
+        System.out.println("##### Heap utilization statistics [MB] #####");
+         
+        //Print used memory
+        System.out.println("Used Memory:"
+            + (runtime.totalMemory() - runtime.freeMemory()) / mb);
+ 
+        //Print free memory
+        System.out.println("Free Memory:"
+            + runtime.freeMemory() / mb);
+         
+        //Print total available memory
+        System.out.println("Total Memory:" + runtime.totalMemory() / mb);
+ 
+        //Print Maximum available memory
+        System.out.println("Max Memory:" + runtime.maxMemory() / mb);
+    }
+    
     public static void sendstats(){
         long idle0, total0 = 0;
         long idle1, total1 = 0;
@@ -573,9 +597,8 @@ public class Client {
 
     public static void main(String[] args) throws InterruptedException {
           
-        
-        
-         sendstats();
+        getMemT();
+        sendstats();
         
             
         
